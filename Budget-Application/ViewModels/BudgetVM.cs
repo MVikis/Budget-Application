@@ -19,5 +19,15 @@ namespace Budget_Application.Models
         public double Entertainment { get; set; }
         public double Food { get; set; }
 
+        private double balance;
+
+        public double Balance
+        {
+            get { return balance; }
+            set { balance = Income - Accommodation - Entertainment - Food; }
+        }
+
+
+
     }
 }

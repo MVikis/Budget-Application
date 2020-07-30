@@ -46,7 +46,7 @@ h2, h3, h4, h5{
     'graph graph graph right right'
     ' graph graph graph right right'
     'income income balance balance balance';
-  grid-gap: 10px;
+  grid-gap: 20px;
 }
 .graph{grid-area: graph;}
 .income { grid-area: income; }
