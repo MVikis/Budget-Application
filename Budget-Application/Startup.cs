@@ -65,6 +65,7 @@ namespace Budget_Application
                 {
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
+                
             });
         }
     }

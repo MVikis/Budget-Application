@@ -1,0 +1,55 @@
+#root{
+    background-color: #1b1b2f;
+}
+header{
+  background-color: #162447;
+}
+.navbar-brand{
+  color: #3fd496!important;
+}
+.col-4,.col-6{
+   
+
+}
+h2, h3, h4, h5{
+    color: whitesmoke;
+  }
+  h2{
+    padding: 10px;
+  }
+  p{
+    color: gray;
+  }
+.container{
+    background-color: transparent;
+}  
+.budget-container{
+  border-radius: 10px;
+  background-color: #162447;
+  box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
+  padding: 1rem;
+} 
+.btn {
+  border-radius: 25px;
+  width: 70px;
+  padding: 2px !important;
+  background-color: #3fd496;
+  margin: auto;
+  box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
+  color: white;
+  font-size: larger;
+}
+.grid-container{
+  display: grid;
+  grid-template-areas:
+    
+    'graph graph graph right right'
+    ' graph graph graph right right'
+    'income income balance balance balance';
+  grid-gap: 10px;
+}
+.graph{grid-area: graph;}
+.income { grid-area: income; }
+.accom { grid-area: right; }
+.balance { grid-area: balance; }
+
