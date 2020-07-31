@@ -23,7 +23,7 @@ namespace Budget_Application.Models
 
         public double Balance
         {
-            get { return balance; }
+            get { return Income - Accommodation - Entertainment - Food;  }
             set { balance = Income - Accommodation - Entertainment - Food; }
         }
 

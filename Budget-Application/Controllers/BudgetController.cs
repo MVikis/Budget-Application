@@ -17,10 +17,11 @@ namespace Budget_Application.Controllers
         {
             return new BudgetVM
             { Month = Enum.GetName(typeof(Months), DateTime.UtcNow.Month),
+                Income = 22000,
                 Accommodation = 5000,
                 Entertainment = 2000,
-                Food = 800,
-                Income = 22000,
+                Food = 800
+                
                 
 
         };

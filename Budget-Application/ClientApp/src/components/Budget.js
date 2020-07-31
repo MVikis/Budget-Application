@@ -23,22 +23,27 @@ export class Budget extends Component {
     
 
     render() {
-        
+        am4core.useTheme(am4themes_animated);
         let chart = am4core.create("chartdiv", am4charts.PieChart);
 
         let data = [];
-       var json = JSON.stringify(this.state.Budget)
+        const entries = Object.values(this.state.Budget);
+          const propertyNames = Object.keys(this.state.Budget);
+        for (let i = 2; i < 6; i++) {
+           
+            data.push({ value: entries[i], label: propertyNames[i]});
+          }
+         
         
-        console.log(json)
-
-       chart.data=[
-        {"month":"July"},{"income":22000},{"accommodation":5000},{"entertainment":2000},{"food":800},{"balance":0}
-       ]
+      chart.data = data;
+       
        
         // Add and configure Series
         let pieSeries = chart.series.push(new am4charts.PieSeries());
-       
+        pieSeries.dataFields.value = "value";
+        pieSeries.dataFields.category = "label";
         pieSeries.slices.template.stroke = am4core.color("#fff");
+        pieSeries.labels.template.disabled = true;
         pieSeries.slices.template.strokeWidth = 2;
         pieSeries.slices.template.strokeOpacity = 1;
         
@@ -46,6 +51,9 @@ export class Budget extends Component {
         pieSeries.hiddenState.properties.opacity = 1;
         pieSeries.hiddenState.properties.endAngle = -90;
         pieSeries.hiddenState.properties.startAngle = -90;
+        chart.legend = new am4charts.Legend();
+chart.legend.position = "bottom";
+chart.legend.fill =am4core.color("#fff");
         return (
             <div>
                   <div className="container">
