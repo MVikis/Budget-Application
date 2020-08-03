@@ -54,9 +54,11 @@ export class Budget extends Component {
         chart.legend = new am4charts.Legend();
 chart.legend.position = "bottom";
 chart.legend.fill =am4core.color("#fff");
+const now = 60;
         return (
             <div>
                   <div className="container">
+                      
                 <div className="row"> <h2>{this.state.Budget.month}</h2> <div className="btn">Edit</div></div>
            
             <div className="grid-container" >
@@ -67,28 +69,29 @@ chart.legend.fill =am4core.color("#fff");
             <div className="accom budget-container">
                 <div>
                 <h5>Accommodation</h5>
-                <p>{this.state.Budget.accommodation}</p>
+                <p>{this.state.Budget.accommodation} kr</p>
                 </div>
                 <div>
                 <h5>Food</h5>
-                <p>{this.state.Budget.food}</p>
+                <p>{this.state.Budget.food} kr</p>
                 </div>
                 <div>
                 <h5>Entertainment</h5>
-                <p>{this.state.Budget.entertainment}</p>
+                <p>{this.state.Budget.entertainment} kr</p>
                 </div>
             </div>
 
             
             <div className="income budget-container">
                 <h4>Income</h4>
-                <p>{this.state.Budget.income}</p>
+                <p>{this.state.Budget.income} kr</p>
             </div>
             <div className="balance budget-container" >
                 <h4>Balance</h4>
-                <p>{this.state.Budget.balance}</p>
+                <p>{this.state.Budget.balance} kr</p>
                 </div>
             </div>
+           
 
             </div>
                 
@@ -98,7 +101,7 @@ chart.legend.fill =am4core.color("#fff");
     }
 
     async populateWeatherData() {
-        const response = await fetch('budget');
+        const response = await fetch('budgets/1');
         const data = await response.json();
         this.setState({ Budget: data, loading: false });
     }

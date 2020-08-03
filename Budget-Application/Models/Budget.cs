@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,9 +10,11 @@ namespace Budget_Application.Models
     {
         January = 1, February, March, April, May, June, July, August, September, October, November, December
     }
-    public class BudgetVM
+    public class Budget
     {
-        public string Month { get; set; }
+        [Key]
+        public int Id { get; set; }
+        //public string Month { get { return Enum.GetName(typeof(Months), DateTime.UtcNow.Month); } }
 
         public double Income { get; set; }
 
@@ -19,12 +22,12 @@ namespace Budget_Application.Models
         public double Entertainment { get; set; }
         public double Food { get; set; }
 
-        private double balance;
+        public DateTime Date { get; set; }
 
         public double Balance
         {
             get { return Income - Accommodation - Entertainment - Food;  }
-            set { balance = Income - Accommodation - Entertainment - Food; }
+           
         }
 
 
