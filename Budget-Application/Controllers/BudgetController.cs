@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Budget_Application.Controllers
 {
-    [Route("[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class BudgetController : ControllerBase
     {
         private readonly BudgetDbContext _context;
@@ -22,12 +22,12 @@ namespace Budget_Application.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Budget>>> GetBudgets()
         {
-            return await _context.Budgets.ToListAsync();  
+            return await _context.Budget.ToListAsync();  
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<Budget>> GetBudget(int id)
         {
-            var budget = await _context.Budgets.FindAsync(id);
+            var budget = await _context.Budget.FindAsync(id);
             if(budget == null)
             {
                 return NotFound();
@@ -37,19 +37,19 @@ namespace Budget_Application.Controllers
         [HttpPost]
         public async Task<ActionResult<Budget>> PostBudget(Budget budget)
         {
-            _context.Budgets.Add(budget);
+            _context.Budget.Add(budget);
             await _context.SaveChangesAsync();
             return CreatedAtAction("GetBudget", new { id = budget.Id  }, budget);
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult<Budget>> DeleteBudget(int id)
         {
-            var budget = await _context.Budgets.FindAsync(id);
+            var budget = await _context.Budget.FindAsync(id);
             if (budget == null)
             {
                 return NotFound();
             }
-            _context.Budgets.Remove(budget);
+            _context.Budget.Remove(budget);
             await _context.SaveChangesAsync();
             return budget;
         }
@@ -81,7 +81,7 @@ namespace Budget_Application.Controllers
         }
         private bool BudgetExists(int id)
         {
-            return _context.Budgets.Any(e => e.Id == id);
+            return _context.Budget.Any(e => e.Id == id);
         }
     }
 }

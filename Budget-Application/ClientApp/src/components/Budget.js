@@ -101,7 +101,7 @@ const now = 60;
     }
 
     async populateWeatherData() {
-        const response = await fetch('budgets/1');
+        const response = await fetch('api/budget/1');
         const data = await response.json();
         this.setState({ Budget: data, loading: false });
     }

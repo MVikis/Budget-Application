@@ -12,6 +12,6 @@ namespace Budget_Application.Models
         {
 
         }
-        public DbSet<Budget> Budgets { get; set; }
+        public DbSet<Budget> Budget { get; set; }
     }
 }
