@@ -15,31 +15,38 @@ export class Budget extends Component {
 
     componentDidMount() {
       
-        this.populateWeatherData();
-       
+        this.populateBudgetData();
+      
     }
 
-   
-    
+    componentWillUnmount() {
+        if (this.chart) {
+          this.chart.dispose();
+        }
+      }
+      NavigateToEdit=()=>{
+        this.props.history.push("/edit")
+      }
 
     render() {
         am4core.useTheme(am4themes_animated);
         let chart = am4core.create("chartdiv", am4charts.PieChart);
+        this.chart = chart;
 
         let data = [];
         const entries = Object.values(this.state.Budget);
           const propertyNames = Object.keys(this.state.Budget);
-        for (let i = 2; i < 6; i++) {
+        for (let i = 4; i < 8; i++) {
            
             data.push({ value: entries[i], label: propertyNames[i]});
           }
          
         
-      chart.data = data;
+      this.chart.data = data;
        
        
         // Add and configure Series
-        let pieSeries = chart.series.push(new am4charts.PieSeries());
+        let pieSeries = this.chart.series.push(new am4charts.PieSeries());
         pieSeries.dataFields.value = "value";
         pieSeries.dataFields.category = "label";
         pieSeries.slices.template.stroke = am4core.color("#fff");
@@ -51,15 +58,17 @@ export class Budget extends Component {
         pieSeries.hiddenState.properties.opacity = 1;
         pieSeries.hiddenState.properties.endAngle = -90;
         pieSeries.hiddenState.properties.startAngle = -90;
-        chart.legend = new am4charts.Legend();
-chart.legend.position = "bottom";
-chart.legend.fill =am4core.color("#fff");
+        this.chart.legend = new am4charts.Legend();
+this.chart.legend.position = "bottom";
+this.chart.legend.fill =am4core.color("#fff");
 const now = 60;
         return (
             <div>
                   <div className="container">
                       
-                <div className="row"> <h2>{this.state.Budget.month}</h2> <div className="btn">Edit</div></div>
+                <div className="row"> <h2>{this.state.Budget.month}</h2>
+                <h2>{this.state.Budget.year}</h2>
+                 <div onClick={()=>this.NavigateToEdit} className="btn">Edit</div></div>
            
             <div className="grid-container" >
                 <div className="graph budget-container">
@@ -100,8 +109,8 @@ const now = 60;
         );
     }
 
-    async populateWeatherData() {
-        const response = await fetch('api/budget/1');
+    async populateBudgetData() {
+        const response = await fetch('api/budget/' + this.props.match.params.id);
         const data = await response.json();
         this.setState({ Budget: data, loading: false });
     }

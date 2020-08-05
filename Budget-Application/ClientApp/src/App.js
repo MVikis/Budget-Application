@@ -7,6 +7,8 @@ import { Counter } from './components/Counter';
 import './style.css'
 import './custom.css'
 import { Budget } from './components/Budget';
+import { Monthlist } from './components/Monthlist';
+
 
 export default class App extends Component {
   static displayName = App.name;
@@ -15,8 +17,8 @@ export default class App extends Component {
     return (
       <Layout>
         <Route exact path='/' component={Home} />
-            <Route path='/counter' component={Counter} />
-            <Route path='/fetch-data' component={Budget} />
+            <Route path='/counter' component={Monthlist} />
+            <Route path='/budget/:id' render={(props) => <Budget  {...props} />}/>
       </Layout>
     );
   }

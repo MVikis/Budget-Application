@@ -1,2 +1,3 @@
-﻿Insert into dbo.Budget(Income, Accommodation, Food, Entertainment, Date)
-Values (22000, 2500, 2000, 1000, GETDATE())
+﻿Insert into dbo.Budget(Month, Year,Income, Accommodation, Food, Entertainment)
+Values ('Dec', 2019,22000, 2500, 3740, 1500)
+

@@ -14,7 +14,10 @@ namespace Budget_Application.Models
     {
         [Key]
         public int Id { get; set; }
-        //public string Month { get { return Enum.GetName(typeof(Months), DateTime.UtcNow.Month); } }
+        [Required]
+        public string Month { get; set; }
+        [Required]
+        public int Year { get; set; }
 
         public double Income { get; set; }
 
@@ -22,7 +25,7 @@ namespace Budget_Application.Models
         public double Entertainment { get; set; }
         public double Food { get; set; }
 
-        public DateTime Date { get; set; }
+        
 
         public double Balance
         {
