@@ -24,7 +24,7 @@ NavigateComp=(id)=>{
   this.props.history.push("/budget/" + id)
 }
 NavigateToCreate=()=>{
-  this.props.history.push("/budget/create")
+  this.props.history.push("/create")
 }
 
 CheckDate(){
@@ -33,7 +33,7 @@ CheckDate(){
   {
     return(   <div className="budget-container accom d-flex flex-column">
     <h4>Budget for {monthNames[today.getMonth()]} {today.getFullYear()}</h4>
-  <div  onClick={()=>this.NavigateToEdit()} className="btn">Create</div>
+  <div  onClick={()=>this.NavigateToCreate()} className="btn">Create</div>
 </div>
     )
   }}

@@ -6,6 +6,8 @@ using Budget_Application.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Budget_Application.Controllers
 {
@@ -37,6 +39,8 @@ namespace Budget_Application.Controllers
         [HttpPost]
         public async Task<ActionResult<Budget>> PostBudget(Budget budget)
         {
+            //Budget budget = new Budget();
+            //budget = JsonSerializer.Deserialize<Budget>(jsonString);
             _context.Budget.Add(budget);
             await _context.SaveChangesAsync();
             return CreatedAtAction("GetBudget", new { id = budget.Id  }, budget);

@@ -34,7 +34,7 @@ export class EditBudget extends Component {
         <form onSubmit={this.mySubmitHandler}>
         <div className="grid-container">
             <div className="budget-container">
-                <div class="form-group income">
+                <div className="form-group income">
       <label htmlFor="income">Income</label>
                 <input id="income" className="form-control" name='income'
                 type='text' placeholder={this.state.Budget.income}

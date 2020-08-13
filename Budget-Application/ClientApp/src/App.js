@@ -17,9 +17,9 @@ export default class App extends Component {
     return (
       <Layout>
         <Route exact path='/' component={Home} />
-            <Route path='/counter' component={Monthlist} />
+            <Route path='/budgets' component={Monthlist} />
             <Route path='/budget/:id' render={(props) => <Budget  {...props} />}/>
-            <Route path='/budget/create' component={CreateBudget}/>
+            <Route path='/create' component={CreateBudget}/>
             <Route path='/edit/:id' render={(props) => <EditBudget  {...props} />}/>
 
       </Layout>
