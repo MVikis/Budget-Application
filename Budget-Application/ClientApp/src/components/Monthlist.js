@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import { Budget } from './Budget';
+import { CreateBudget } from './CreateBudget';
+
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
 
 
 export class Monthlist extends Component {
@@ -8,32 +13,46 @@ export class Monthlist extends Component {
     this.state = { budgets: [] , loading: true};
   }
   componentDidMount() {
-      
-    this.populateBudgetsData();
+     
+    
+      this.populateBudgetsData();
+    
+  
 }
+
 NavigateComp=(id)=>{
   this.props.history.push("/budget/" + id)
 }
+NavigateToCreate=()=>{
+  this.props.history.push("/budget/create")
+}
+
+CheckDate(){
+  var today = new Date()
+  if(!this.state.budgets.some(budget => budget.month === today.getMonth()&& budget.year === today.getFullYear()))
+  {
+    return(   <div className="budget-container accom d-flex flex-column">
+    <h4>Budget for {monthNames[today.getMonth()]} {today.getFullYear()}</h4>
+  <div  onClick={()=>this.NavigateToEdit()} className="btn">Create</div>
+</div>
+    )
+  }}
 
 MapingBudgets=()=>{
   return(
-
-this.state.loading? <p>Loading...</p>:
-  this.state.budgets.map(budget => (
-    <div className="budget-container row m-3" key={budget.id}>
-      
-   
+<div>
+{this.state.loading? <p>Loading...</p>:
+(<div className="grid-container">
+    {this.CheckDate()}
+  {this.state.budgets.map(budget => (
+   <div key={budget.id} className="budget-container row m-3" >
       <h2>{budget.month}</h2>
       
-      <div onClick={()=>this.NavigateComp(budget.id)} className="btn">Edit</div>
-     
-
-    </div>
-    
-    
-
-
-  )).sort((a, b)=> b.year - a.year) )
+      <div onClick={()=>this.NavigateComp(budget.id)} className="btn">Edit</div>   
+ </div>))} </div>)}
+  
+  </div>
+  )
 }
 
   render() {
