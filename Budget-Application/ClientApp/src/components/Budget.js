@@ -25,7 +25,7 @@ export class Budget extends Component {
         }
       }
       NavigateToEdit=()=>{
-        this.props.history.push("/edit")
+        this.props.history.push(`/edit/${this.state.Budget.id}`)
       }
 
     render() {
@@ -68,7 +68,7 @@ const now = 60;
                       
                 <div className="row"> <h2>{this.state.Budget.month}</h2>
                 <h2>{this.state.Budget.year}</h2>
-                 <div onClick={()=>this.NavigateToEdit} className="btn">Edit</div></div>
+                 <div onClick={()=>this.NavigateToEdit()} className="btn">Edit</div></div>
            
             <div className="grid-container" >
                 <div className="graph budget-container">
